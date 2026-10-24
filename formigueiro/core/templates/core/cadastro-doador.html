@@ -1,0 +1,66 @@
+{% extends 'core/base_auth.html' %}
+{% load static %}
+
+{% block titulo %}Cadastro Doador{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'assets/Css/cadastro-doador.css' %}">{% endblock %}
+{% block scripts %}<script src="{% static 'assets/Js/cadastro.js' %}" defer></script>{% endblock %}
+
+{% block painel_titulo %}Junte-se à maior rede de doações locais de Patos-PB{% endblock %}
+{% block painel_texto %}Facilitamos a conexão direta entre pessoas solidárias e instituições sérias. Cadastre-se hoje e doe para quem precisa, pertinho de você.{% endblock %}
+
+{% block formulario %}
+        <h2>Crie sua Conta</h2>
+        <p class="subtitulo">Junte-se à maior comunidade de doações local</p>
+
+        <div class="foto">
+          <label class="foto-circulo" for="foto" aria-label="Adicionar foto de perfil">
+            <svg id="foto-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <img id="foto-previa" alt="Prévia da foto de perfil" hidden>
+          </label>
+          <label class="foto-texto" for="foto">Adicionar foto de perfil</label>
+          <input type="file" id="foto" accept="image/*" hidden>
+        </div>
+        <p class="erro erro-foto" id="erro-foto" role="alert"></p>
+
+        <span class="rotulo">Cadastre-se como:</span>
+        <nav class="tipo" aria-label="Tipo de conta">
+          <a href="{% url 'cadastro_doador' %}" class="ativo">Doador</a>
+          <a href="{% url 'cadastro_ong' %}" class="">ONG</a>
+        </nav>
+
+        <form id="form-cadastro" data-tipo="doador" data-destino="{% url 'login_doador' %}" action="#" method="post" novalidate>
+          {% csrf_token %}
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Caylanne Rodrigues" required>
+          </div>
+          <p class="erro" id="erro-nome" role="alert"></p>
+          <div class="campo">
+            <label for="contato">E-mail ou Celular</label>
+            <input type="text" id="contato" name="contato" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+          </div>
+          <p class="erro" id="erro-contato" role="alert"></p>
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" autocomplete="new-password" required>
+          </div>
+          <p class="erro" id="erro-senha" role="alert"></p>
+          <div class="campo">
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua do Prado, Centro, Patos - PB" required>
+          </div>
+          <p class="erro" id="erro-endereco" role="alert"></p>
+
+          <label class="termos">
+            <input type="checkbox" id="termos" name="termos" required>
+            Aceito os termos de uso e política de convivência.
+          </label>
+          <p class="erro erro-termos" id="erro-termos" role="alert"></p>
+
+          <div id="mensagem-form" class="aviso" role="status" hidden></div>
+
+          <button type="submit" class="botao">Cadastrar</button>
+        </form>
+
+        {% include 'core/_social.html' %}
+{% endblock %}

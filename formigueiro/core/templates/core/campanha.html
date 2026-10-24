@@ -1,0 +1,55 @@
+{% load static %}<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes da Campanha | Formigueiro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/Css/campanha.css' %}">
+  <script src="{% static 'assets/Js/comum.js' %}" defer></script>
+  <script src="{% static 'assets/Js/campanha.js' %}" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo-conteudo">
+      <a href="{% url 'home_doador' %}" class="logo" id="link-logo" aria-label="Formigueiro, página inicial">
+        <span class="logo-icone">F</span>
+        <span class="logo-texto">
+          <span class="logo-nome">Formigueiro</span>
+          <span class="logo-sub">Doações locais em Patos-PB</span>
+        </span>
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegação principal">
+        <a href="{% url 'home_doador' %}" class="ativo">Campanhas</a>
+      </nav>
+
+      <a href="{% url 'perfil_doador' %}" class="perfil" id="link-perfil" aria-label="Meu perfil">
+        <span class="perfil-nome" id="perfil-nome">Seu Nome</span>
+        <span class="avatar">DA</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="pagina" id="pagina" data-img-base="{% static 'assets/img/' %}" data-url-home-ong="{% url 'home_ong' %}" data-url-perfil-ong="{% url 'perfil_ong' %}" data-url-painel-ong="{% url 'painel_ong' %}" data-url-criar-campanha="{% url 'criar_campanha' %}" data-url-home-doador="{% url 'home_doador' %}" data-url-perfil-doador="{% url 'perfil_doador' %}" data-url-doar="{% url 'doar' %}">
+
+    <div class="cabecalho">
+      <a href="{% url 'home_doador' %}" class="voltar" id="link-voltar" aria-label="Voltar para as campanhas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </a>
+      <h1>Detalhes da Campanha</h1>
+    </div>
+
+    <div class="imagem" id="imagem"></div>
+
+    <section class="sobre" id="sobre" aria-label="Sobre a ONG e entrega"></section>
+
+    <aside class="resumo" id="resumo" aria-label="Resumo da campanha"></aside>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'core/base_auth.html' %}
+{% load static %}
+
+{% block titulo %}Login Doador{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'assets/Css/login-doador.css' %}">{% endblock %}
+{% block scripts %}<script src="{% static 'assets/Js/login.js' %}" defer></script>{% endblock %}
+
+{% block painel_titulo %}Sua doação chega a quem precisa{% endblock %}
+{% block painel_texto %}Acesse sua conta para encontrar campanhas de arrecadação, acompanhar metas e doar diretamente para instituições da sua região.{% endblock %}
+
+{% block formulario %}
+        <h2>Acesse sua Conta</h2>
+        <p class="subtitulo">Bem-vindo de volta! Insira suas credenciais para continuar.</p>
+
+        <form id="form-login" data-tipo="doador" data-destino="{% url 'home_doador' %}" action="#" method="post" novalidate>
+          {% csrf_token %}
+          <div class="campo">
+            <label for="email">E-mail ou Celular</label>
+            <input type="text" id="email" name="email" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+          </div>
+          <p class="erro" id="erro-email" role="alert"></p>
+          <div class="campo campo-senha">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="••••••••••••" autocomplete="current-password" required>
+            <button type="button" class="ver-senha" aria-label="Mostrar senha">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <p class="erro" id="erro-senha" role="alert"></p>
+
+          <a href="#" class="esqueceu" id="esqueceu">Esqueceu a senha?</a>
+
+          <div id="mensagem-form" class="aviso" role="status" hidden></div>
+
+          <button type="submit" class="botao">Entrar</button>
+        </form>
+
+        {% include 'core/_social.html' %}
+
+        <p class="criar-conta">Ainda não tem conta? <a href="{% url 'cadastro_doador' %}">Criar conta</a></p>
+{% endblock %}
