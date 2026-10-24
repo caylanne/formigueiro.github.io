@@ -36,7 +36,7 @@ A ONG chega ao detalhe da campanha com `?de=ong` (ex.: `/campanha/?id=2&de=ong`)
 
 Os JS não têm URLs fixas: o template injeta as rotas por `data-attributes`
 (`data-destino`, `data-img-base`, `data-campanha-url`, `data-url-...`).
-Ao criar uma tela nova, use `{% url %}` / `{% static %}` no template e leia o
+Ao criar uma tela nova, use `<a href="{% url 'cadastro' %}">Criar conta</a>` / `{% static %}` no template e leia o
 valor no JS, em vez de escrever `algo.html` no código.
 
 ## O que ainda é protótipo
