@@ -16,7 +16,7 @@ Abra http://127.0.0.1:8000/ (redireciona para o cadastro da ONG).
 
 ## Telas e rotas
 
-| Rota                   | Nome (`{% url %}`) | Tela                                   |
+| Rota                   | Nome (`[Ir para o cadastro](cadastro.html)`) | Tela                                   |
 |------------------------|--------------------|----------------------------------------|
 | `/cadastro/ong/`       | `cadastro_ong`     | Cadastro da ONG                        |
 | `/cadastro/doador/`    | `cadastro_doador`  | Cadastro do doador                     |
